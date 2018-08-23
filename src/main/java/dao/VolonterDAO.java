@@ -1,32 +1,23 @@
 package dao;
 
-import model.User;
+import model.Pensioner;
 import model.Volonter;
-import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.criterion.Restrictions;
 
+import java.awt.*;
+import java.util.Collection;
 
-public class VolonterDAO {
+public interface VolonterDAO {
 
-    private Session session;
+    VolonterDAO getVolonter(long id) throws HibernateException;
 
-    public VolonterDAO(Session session) {
-        this.session = session;
-    }
+    long addVolonter(Volonter volonter) throws HibernateException;
 
-    public Volonter get(long id) throws HibernateException {
-        return (Volonter) session.get(User.class, id);
-    }
+    public void upDateVolonter(Volonter volonter) throws HibernateException;
+    public Collection getAllVolonter() throws HeadlessException;
+    public void delateVolonter(Volonter volonter) throws HibernateException;
 
-    public long getUserId(String name) throws HibernateException {
-        Criteria criteria = session.createCriteria(Volonter.class);
-        return ((Volonter) criteria.add(Restrictions.eq("name", name)).uniqueResult()).getId();
-    }
-
-//    public long insertUser(String name) throws HibernateException {
-//        return (Long) session.save(new Volonter(name));
-//    }
+    public Volonter getVolonterByStatus(boolean status) throws HibernateException;
+    public String getVolonterByRank (String rank) throws HibernateException;
 
 }

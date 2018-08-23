@@ -1,24 +1,24 @@
 package main;
 
 
-import dao.DbHelper;
+import util.DbHelper;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.ResourceHandler;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
-import org.eclipse.jetty.servlet.ServletHolder;
+
+import javax.swing.*;
 
 public class Main {
 public static void main(String[] args) throws Exception{
 
 
         DbHelper dbHelper = new DbHelper();
-
+        JOptionPane.showMessageDialog(null, "Hello!");
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
-
 
 
         ResourceHandler resource_handler = new ResourceHandler();
@@ -35,6 +35,9 @@ public static void main(String[] args) throws Exception{
 
         System.out.println("Server started");
         server.join();
+
+
+
 
    }
 }

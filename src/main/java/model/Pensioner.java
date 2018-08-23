@@ -12,6 +12,9 @@ public class Pensioner extends User implements Serializable { // Serializable Im
     @Column(name = "address", unique = false, updatable = false)
     private String address;
 
+    @Column(name = "phone", unique = false, updatable = false)
+    private String phone;
+
     @Column(name = "comment", unique = false, updatable = false)
     private String comment;
 
@@ -32,9 +35,10 @@ public class Pensioner extends User implements Serializable { // Serializable Im
     }
 
 
-    public Pensioner(String name, String lastName, long age, String address, String comment) {
+    public Pensioner(String name, String lastName, long age, String address, String phone, String comment) {
         super(name, lastName, age);
         this.address = address;
+        this.phone = phone;
         this.comment = comment;
     }
 

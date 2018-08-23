@@ -11,13 +11,12 @@ public class PensionerServiceImpl implements PensionerService {
 
     @Override
     public Pensioner get(long id) throws HibernateException {
-        return pensionerDAO.get(id);
+        return pensionerDAO.getPensioner(id);
     }
 
     @Override
     public long addPensioner(Pensioner pensioner) throws HibernateException {
         return 0;
     }
-
 
 }
