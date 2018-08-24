@@ -1,6 +1,10 @@
 package main;
 
 
+import controller.IncomingCallServlet;
+import org.eclipse.jetty.servlet.ServletHolder;
+import service.PensionerService;
+import service.PensionerServiceImpl;
 import util.DbHelper;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.handler.HandlerList;
@@ -16,9 +20,11 @@ public static void main(String[] args) throws Exception{
 
 
         DbHelper dbHelper = new DbHelper();
-        JOptionPane.showMessageDialog(null, "Hello!");
+        PensionerService pensionerService = new PensionerServiceImpl();
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
+        context.addServlet(new ServletHolder(new IncomingCallServlet(pensionerService)), "/phone");
+
 
 
         ResourceHandler resource_handler = new ResourceHandler();
@@ -35,9 +41,5 @@ public static void main(String[] args) throws Exception{
 
         System.out.println("Server started");
         server.join();
-
-
-
-
    }
 }

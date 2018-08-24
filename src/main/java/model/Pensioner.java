@@ -43,11 +43,13 @@ public class Pensioner extends User implements Serializable { // Serializable Im
     }
 
 
-    public Pensioner(String name, String lastName, long age, String address, String phone, String comment) {
+    public Pensioner(String name, String lastName, String age, String address, String phone, String comment) {
         super(name, lastName, age);
         this.address = address;
         this.phone = phone;
         this.comment = comment;
     }
+
+
 
 }

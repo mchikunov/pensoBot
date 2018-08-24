@@ -20,7 +20,7 @@ public class User implements Serializable { // Serializable Important to Hiberna
     private String lastName;
 
     @Column(name = "age", unique = false, updatable = false)
-    private long age;
+    private String age;
 
     //Important to Hibernate!
     @SuppressWarnings("UnusedDeclaration")
@@ -38,7 +38,7 @@ public class User implements Serializable { // Serializable Important to Hiberna
         this.setName(name);
     }
 
-    public User(String name, String lastName, long age) {
+    public User(String name, String lastName, String age) {
         this.name = name;
         this.lastName = lastName;
         this.age = age;
