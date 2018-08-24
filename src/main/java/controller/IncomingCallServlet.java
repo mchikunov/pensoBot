@@ -21,13 +21,13 @@ public class IncomingCallServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String phoneNumber = req.getParameter("phoneNumber");
+
         String pensionerAddress = null;
         String name = req.getParameter("name");
         String lastName = req.getParameter("lastName");
         String age = req.getParameter("age");
         String address = req.getParameter("address");
-        String phone = req.getParameter("phone");
+        String phoneNumber = req.getParameter("phoneNumber");
         String comment = req.getParameter("comment");
 
 
@@ -37,7 +37,7 @@ public class IncomingCallServlet extends HttpServlet {
             ///to Eugeny
         }
         else {
-            pensionerService.addPensioner(new Pensioner(name,lastName,age,address,phone,comment));
+            pensionerService.addPensioner(new Pensioner(name,lastName,age,address,phoneNumber,comment));
             pensionerAddress = address;
             ///to Eugeny
         }

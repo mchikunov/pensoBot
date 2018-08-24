@@ -15,9 +15,8 @@ public class PensionerServiceImpl implements PensionerService {
     }
 
     @Override
-    public long addPensioner(Pensioner pensioner) throws HibernateException {
+    public void addPensioner(Pensioner pensioner) throws HibernateException {
         pensionerDAO.addPensioner(pensioner);
-        return pensionerDAO.getID(pensioner);
     }
 
     @Override
