@@ -42,28 +42,4 @@ public class Pensioner extends User implements Serializable { // Serializable Im
         this.comment = comment;
     }
 
-//    @SuppressWarnings("UnusedDeclaration")
-//    public String getName() {
-//        return name;
-//    }
-//
-//    public void setName(String name) {
-//        this.name = name;
-//    }
-//
-//    public long getId() {
-//        return id;
-//    }
-//
-//    public void setId(long id) {
-//        this.id = id;
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return "UserDataSet{" +
-//                "id=" + id +
-//                ", name='" + name + '\'' +
-//                '}';
-//    }
 }
