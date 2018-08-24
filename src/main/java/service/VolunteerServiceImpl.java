@@ -7,7 +7,7 @@ import org.hibernate.HibernateException;
 
 public class VolunteerServiceImpl implements VolunteerService {
 
-    private static final VolunteerDAO VOLUNTEER_DAO = new VolunteerDAOImpl();
+    private static final VolunteerDAO volunteerDAO = new VolunteerDAOImpl();
 
     @Override
     public Volunteer getVolonter(long id) throws HibernateException {
@@ -16,6 +16,12 @@ public class VolunteerServiceImpl implements VolunteerService {
 
     @Override
     public long addVolonter(Volunteer volunteer) throws HibernateException {
-        return 0;
+        volunteerDAO.addVolunteer(volunteer);
+        return volunteerDAO.getID(volunteer);
+    }
+
+    @Override
+    public Volunteer getVolunteerByStatus(boolean status) throws HibernateException {
+        return volunteerDAO.getVolunteerByStatus(status);
     }
 }

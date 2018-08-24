@@ -8,12 +8,14 @@ import java.util.Collection;
 
 public interface VolunteerDAO {
 
-    VolunteerDAO getVolunteer(long id) throws HibernateException;
+    Volunteer getVolunteer(long id) throws HibernateException;
+    public long getID(Volunteer volunteer) throws  HibernateException;
 
-    long addVolunteer(Volunteer volunteer) throws HibernateException;
+    public void addVolunteer(Volunteer volunteer) throws HibernateException;
 
     public void upDateVolunteer(Volunteer volunteer) throws HibernateException;
-    public Collection getAllVolunteer() throws HeadlessException;
+    public Collection getAllVolunteers() throws HeadlessException;
+    public Collection getAllFreeVolunteers() throws HeadlessException;
     public void delateVolunteer(Volunteer volunteer) throws HibernateException;
 
     public Volunteer getVolunteerByStatus(boolean status) throws HibernateException;

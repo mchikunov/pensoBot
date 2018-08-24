@@ -18,6 +18,14 @@ public class Pensioner extends User implements Serializable { // Serializable Im
     @Column(name = "comment", unique = false, updatable = false)
     private String comment;
 
+    public String getAddress() {
+        return address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
     //Important to Hibernate!
     @SuppressWarnings("UnusedDeclaration")
     public Pensioner() {

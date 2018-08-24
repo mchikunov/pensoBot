@@ -9,8 +9,9 @@ import java.util.Collection;
 public interface PensionerDAO {
 
     public Pensioner getPensioner(long id) throws HibernateException;
+    public long getID(Pensioner pensioner) throws  HibernateException;
 
-    public long addPensioner(long id, Pensioner pensioner) throws HibernateException;
+    public void addPensioner(Pensioner pensioner) throws HibernateException;
     public void upDatePensioner(Pensioner pensioner) throws HibernateException;
     public Collection getAllPensioners() throws HeadlessException;
     public void delatePensioner(Pensioner pensioner) throws HibernateException;

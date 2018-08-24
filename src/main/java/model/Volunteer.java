@@ -15,6 +15,11 @@ public class Volunteer extends User implements Serializable { // Serializable Im
     @Column(name = "rank_col", unique = false, updatable = false)
     public String rank;
 
+    public boolean isStatus() {
+        return status;
+    }
+
+
     @SuppressWarnings("UnusedDeclaration")
     public Volunteer() {
     }
