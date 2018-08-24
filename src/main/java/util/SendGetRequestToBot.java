@@ -1,39 +1,34 @@
 package util;
 
+import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 
 public class SendGetRequestToBot {
 
-    public static String executeGetRequest(String targetUrl, String urlParameters) throws MalformedURLException {
-       URL url = new URL(targetUrl);
-       HttpURLConnection connection = null;
+    public static void executeGetRequest(String targetUrl, String urlParameters) throws Exception {
+        String url = targetUrl+"?phoneNumber="+urlParameters;
 
-        try {
-            //Create connection
-            connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
+        URL obj = new URL(url);
+        HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
 
-            connection.setUseCaches(false);
-            connection.setDoInput(true);
+        connection.setRequestMethod("GET");
 
-            //Send request
-            DataOutputStream wr = new DataOutputStream(
-                    connection.getOutputStream());
-            wr.writeBytes(urlParameters);
-            wr.close();
+        BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+        String inputLine;
+        StringBuffer response = new StringBuffer();
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (connection != null){
-                connection.disconnect();
-            }
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
         }
-        return null;
+        in.close();
+
+        System.out.println(response.toString());
     }
 
 }

@@ -3,6 +3,7 @@ package controller;
 import com.sun.net.httpserver.HttpServer;
 import model.Pensioner;
 import service.PensionerService;
+import util.SendGetRequestToBot;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -34,6 +35,13 @@ public class IncomingCallServlet extends HttpServlet {
         Pensioner pensioner = pensionerService.getPensionerByPhone(phoneNumber);
         if (pensioner != null) {
             pensionerAddress = pensioner.getAddress();
+
+            try {
+                SendGetRequestToBot.executeGetRequest("http://12461cd6.ngrok.io/phone",phoneNumber);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
 
         }
         else {

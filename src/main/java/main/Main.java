@@ -12,18 +12,26 @@ import org.eclipse.jetty.server.handler.ResourceHandler;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
+import util.SendGetRequestToBot;
 
 import javax.swing.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class Main {
 public static void main(String[] args) throws Exception{
 
 
+
         DbHelper dbHelper = new DbHelper();
         PensionerService pensionerService = new PensionerServiceImpl();
 
+
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.addServlet(new ServletHolder(new IncomingCallServlet(pensionerService)), "/phone");
+
 
 
 
@@ -38,6 +46,7 @@ public static void main(String[] args) throws Exception{
         Server server = new Server(8081);
         server.setHandler(handlers);
         server.start();
+
 
         System.out.println("Server started");
         server.join();
