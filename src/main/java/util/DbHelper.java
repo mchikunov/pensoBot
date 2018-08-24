@@ -2,7 +2,7 @@ package util;
 
 import model.Pensioner;
 import model.User;
-import model.Volonter;
+import model.Volunteer;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -34,7 +34,7 @@ public class DbHelper {
     private Configuration getMySqlConfiguration() {
         Configuration configuration = new Configuration();
         configuration.addAnnotatedClass(User.class);
-        configuration.addAnnotatedClass(Volonter.class);
+        configuration.addAnnotatedClass(Volunteer.class);
         configuration.addAnnotatedClass(Pensioner.class);
 
 
