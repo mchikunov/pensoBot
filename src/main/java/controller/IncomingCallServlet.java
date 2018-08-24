@@ -34,7 +34,7 @@ public class IncomingCallServlet extends HttpServlet {
         Pensioner pensioner = pensionerService.getPensionerByPhone(phoneNumber);
         if (pensioner != null) {
             pensionerAddress = pensioner.getAddress();
-            ///to Eugeny
+
         }
         else {
             pensionerService.addPensioner(new Pensioner(name,lastName,age,address,phoneNumber,comment));
