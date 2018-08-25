@@ -1,6 +1,5 @@
 package controller;
 
-import com.sun.net.httpserver.HttpServer;
 import model.Pensioner;
 import service.PensionerService;
 import util.SendGetRequestToBot;
@@ -10,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 
 public class IncomingCallServlet extends HttpServlet {
     private PensionerService pensionerService;
@@ -35,21 +33,18 @@ public class IncomingCallServlet extends HttpServlet {
 
         Pensioner pensioner = pensionerService.getPensionerByPhone(phoneNumber);
         if (pensioner != null) {
-
             try {
                 SendGetRequestToBot.executeGetRequest("http://1b257023.ngrok.io/servletBot" , String.valueOf(pensioner.getId()));
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-
         }
         else {
-
             pensionerService.addPensioner(new Pensioner(name,lastName,age,address,phoneNumber,comment));
-
             try {
-                SendGetRequestToBot.executeGetRequest("http://1b257023.ngrok.io/servletBot", String.valueOf(pensionerService.getPensionerByPhone(phoneNumber).getId()));
+                SendGetRequestToBot.executeGetRequest("http://e20ccaac.ngrok.io/servletBot",
+                        String.valueOf(pensionerService.getPensionerByPhone(phoneNumber).getId()));
             } catch (Exception e) {
                 e.printStackTrace();
             }

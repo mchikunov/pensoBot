@@ -16,12 +16,6 @@ import java.util.List;
 
 public class VolunteerDAOImpl implements VolunteerDAO {
 
-    private Session session;
-
-    public VolunteerDAOImpl() {
-        session = DbHelper.getSessionFactory().openSession();
-    }
-
     @Override
     public Volunteer getVolunteer(long id) throws HibernateException {
         Session session = DbHelper.getSessionFactory().openSession();
@@ -31,12 +25,13 @@ public class VolunteerDAOImpl implements VolunteerDAO {
     }
 
     @Override
-    public void addVolunteer(Volunteer volunteer) throws HibernateException {
+    public long addVolunteer(Volunteer volunteer) throws HibernateException {
        Session session = DbHelper.getSessionFactory().openSession();
        session.beginTransaction();
-       session.save(volunteer);
+       long id = (long) session.save(volunteer);
        session.getTransaction().commit();
        session.close();
+       return id;
     }
 
     @Override

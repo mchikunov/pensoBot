@@ -16,7 +16,7 @@ public class Volunteer extends User implements Serializable { // Serializable Im
     public String rank;
 
     @Column(name = "chat_id", unique = true, updatable = false)
-    public String chatId;
+    public long chatId;
 
     public boolean isStatus() {
         return status;
@@ -39,10 +39,12 @@ public class Volunteer extends User implements Serializable { // Serializable Im
     }
 
 
-    public Volunteer(String name, String lastName, String age, boolean status, String rank) {
+    public Volunteer(String name, String lastName, String age, boolean status, long chatId) {
         super(name, lastName, age);
         this.status = status;
-        this.rank = rank;
+        this.rank = "Начинающий";
+        this.chatId = chatId;
+
     }
 
 }
