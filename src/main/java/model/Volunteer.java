@@ -15,6 +15,9 @@ public class Volunteer extends User implements Serializable { // Serializable Im
     @Column(name = "rank_col", unique = false, updatable = false)
     public String rank;
 
+    @Column(name = "chat_id", unique = true, updatable = false)
+    public String chatId;
+
     public boolean isStatus() {
         return status;
     }
