@@ -16,10 +16,8 @@ public class SendGetRequestToBot {
 
     public static void executeGetRequest(String targetUrl, String urlParameters) throws Exception {
 //        String url = targetUrl+urlParameters.getBytes(StandardCharsets.UTF_8);
-        String url = targetUrl+"?address=" + "москва".getBytes(StandardCharsets.US_ASCII);
-//        ByteBuffer byteBuffer = Charset.forName("UTF-8").encode(url);
-//        System.out.println(byteBuffer);
-       // ByteBuffer byteBuffer = Charset.forName("UTF-8").encode(myString)
+        String url = targetUrl+"?pensionerId=" + urlParameters;
+
 
         URL obj = new URL(url);
         HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
