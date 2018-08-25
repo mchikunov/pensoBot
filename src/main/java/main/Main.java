@@ -2,6 +2,7 @@ package main;
 
 
 import controller.IncomingCallServlet;
+import model.Pensioner;
 import org.eclipse.jetty.servlet.ServletHolder;
 import service.PensionerService;
 import service.PensionerServiceImpl;
@@ -19,10 +20,16 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class Main {
 public static void main(String[] args) throws Exception{
 
+
+   // String url = "http://054098cc.ngrok.io/servletBot"+"?address=" + "москва".getBytes(StandardCharsets.US_ASCII);
+   // ByteBuffer byteBuffer = Charset.forName("UTF-8").encode(url);
 
 
         DbHelper dbHelper = new DbHelper();
@@ -48,7 +55,10 @@ public static void main(String[] args) throws Exception{
         server.start();
 
 
-        System.out.println("Server started");
+    pensionerService.addPensioner(new Pensioner("Иван","Иванов","64","Москва улица Ленина 1 кв 1","79854859568","All I need is ..."));
+
+
+    System.out.println("Server started");
         server.join();
    }
 }

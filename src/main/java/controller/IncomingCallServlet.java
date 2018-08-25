@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 public class IncomingCallServlet extends HttpServlet {
     private PensionerService pensionerService;
@@ -34,10 +35,12 @@ public class IncomingCallServlet extends HttpServlet {
 
         Pensioner pensioner = pensionerService.getPensionerByPhone(phoneNumber);
         if (pensioner != null) {
-            pensionerAddress = pensioner.getAddress();
+            pensionerAddress = "Москва_я_тебя_искал";//pensioner.getAddress();
 
             try {
-                SendGetRequestToBot.executeGetRequest("http://12461cd6.ngrok.io/phone",phoneNumber);
+             //  SendGetRequestToBot.executeGetRequest("http://054098cc.ngrok.io/servletBot" , "?address=privet");
+//                SendGetRequestToBot.executeGetRequest("http://054098cc.ngrok.io/servletBot" , "");
+                SendGetRequestToBot.executeGetRequest("http://054098cc.ngrok.io/servletBot" , "?address="+pensionerAddress);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -46,8 +49,15 @@ public class IncomingCallServlet extends HttpServlet {
         }
         else {
             pensionerService.addPensioner(new Pensioner(name,lastName,age,address,phoneNumber,comment));
+           // pensionerService.addPensioner(new Pensioner("Иван","Иванов","64","Москва улица Ленина 1 кв 1","89063453434","All I need is ..."));
             pensionerAddress = address;
             ///to Eugeny
+
+            try {
+                SendGetRequestToBot.executeGetRequest("http://054098cc.ngrok.io/servletBot",pensionerAddress);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
     }

@@ -40,12 +40,14 @@ public class DbHelper {
 
         configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         configuration.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
-        configuration.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/test");
-        configuration.setProperty("hibernate.connection.verifyServerCertificate", "false");
-        configuration.setProperty("hibernate.connection.requireSSL", "true");
-        configuration.setProperty("hibernate.connection.useSSL", "true");
-        configuration.setProperty("hibernate.connection.username", "root");
-        configuration.setProperty("hibernate.connection.password", "rootroot");
+        //local configuration.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/test");
+        configuration.setProperty("hibernate.connection.url", "jdbc:mysql://146.120.82.46:3306/pensioner_db");
+       //local configuration.setProperty("hibernate.connection.verifyServerCertificate", "false");
+       //local configuration.setProperty("hibernate.connection.requireSSL", "true");
+      //local  configuration.setProperty("hibernate.connection.useSSL", "true");
+        configuration.setProperty("hibernate.connection.username", "pensioner");
+        configuration.setProperty("hibernate.connection.password", "pensioner");
+       //local configuration.setProperty("hibernate.connection.password", "rootroot");
         configuration.setProperty("hibernate.show_sql", hibernate_show_sql);
 
         configuration.setProperty("hibernate.hbm2ddl.auto", hibernate_hbm2ddl_auto);

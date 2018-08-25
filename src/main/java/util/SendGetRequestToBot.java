@@ -8,11 +8,18 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class SendGetRequestToBot {
 
     public static void executeGetRequest(String targetUrl, String urlParameters) throws Exception {
-        String url = targetUrl+"?phoneNumber="+urlParameters;
+//        String url = targetUrl+urlParameters.getBytes(StandardCharsets.UTF_8);
+        String url = targetUrl+"?address=" + "москва".getBytes(StandardCharsets.US_ASCII);
+//        ByteBuffer byteBuffer = Charset.forName("UTF-8").encode(url);
+//        System.out.println(byteBuffer);
+       // ByteBuffer byteBuffer = Charset.forName("UTF-8").encode(myString)
 
         URL obj = new URL(url);
         HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
