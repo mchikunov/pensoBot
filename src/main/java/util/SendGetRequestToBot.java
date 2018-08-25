@@ -12,7 +12,7 @@ import java.net.URL;
 public class SendGetRequestToBot {
 
     public static void executeGetRequest(String targetUrl, String urlParameters) throws Exception {
-        String url = targetUrl+"?phoneNumber="+urlParameters;
+        String url = targetUrl+"?pensionerId="+urlParameters;
 
         URL obj = new URL(url);
         HttpURLConnection connection = (HttpURLConnection) obj.openConnection();

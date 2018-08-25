@@ -12,7 +12,7 @@ import java.sql.Statement;
 
 public class DbHelper {
     private static final String hibernate_show_sql = "true";
-    private static final String hibernate_hbm2ddl_auto = "create";
+    private static final String hibernate_hbm2ddl_auto = "update";
 
     private Statement statement;
 

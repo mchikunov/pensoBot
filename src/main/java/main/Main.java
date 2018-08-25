@@ -30,7 +30,7 @@ public static void main(String[] args) throws Exception{
 
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
-        context.addServlet(new ServletHolder(new IncomingCallServlet(pensionerService)), "/phone");
+        context.addServlet(new ServletHolder(new IncomingCallServlet(pensionerService)), "/phoneNumber");
 
 
 
