@@ -40,7 +40,7 @@ public class IncomingCallServlet extends HttpServlet {
             try {
              //  SendGetRequestToBot.executeGetRequest("http://054098cc.ngrok.io/servletBot" , "?address=privet");
 //                SendGetRequestToBot.executeGetRequest("http://054098cc.ngrok.io/servletBot" , "");
-                SendGetRequestToBot.executeGetRequest("http://425bcfab.ngrok.io/servletBot" , String.valueOf(pensioner.getId()));
+                SendGetRequestToBot.executeGetRequest("http://1b257023.ngrok.io/servletBot" , String.valueOf(pensioner.getId()));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -54,7 +54,7 @@ public class IncomingCallServlet extends HttpServlet {
             ///to Eugeny
 
             try {
-                SendGetRequestToBot.executeGetRequest("http://054098cc.ngrok.io/servletBot",pensionerAddress);
+                SendGetRequestToBot.executeGetRequest("http://1b257023.ngrok.io/servletBot",pensionerAddress);
             } catch (Exception e) {
                 e.printStackTrace();
             }
