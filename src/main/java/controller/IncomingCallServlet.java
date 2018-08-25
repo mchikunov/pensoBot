@@ -1,6 +1,5 @@
 package controller;
 
-import com.sun.net.httpserver.HttpServer;
 import model.Pensioner;
 import service.PensionerService;
 import util.SendGetRequestToBot;
@@ -10,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 
 public class IncomingCallServlet extends HttpServlet {
     private PensionerService pensionerService;
@@ -35,26 +33,17 @@ public class IncomingCallServlet extends HttpServlet {
 
         Pensioner pensioner = pensionerService.getPensionerByPhone(phoneNumber);
         if (pensioner != null) {
-            //pensionerAddress = "Москва_я_тебя_искал";//pensioner.getAddress();
-
             try {
-             //  SendGetRequestToBot.executeGetRequest("http://054098cc.ngrok.io/servletBot" , "?address=privet");
-//                SendGetRequestToBot.executeGetRequest("http://054098cc.ngrok.io/servletBot" , "");
-                SendGetRequestToBot.executeGetRequest("http://1b257023.ngrok.io/servletBot" , String.valueOf(pensioner.getId()));
+                SendGetRequestToBot.executeGetRequest("http://e20ccaac.ngrok.io/servletBot" , String.valueOf(pensioner.getId()));
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-
         }
         else {
             pensionerService.addPensioner(new Pensioner(name,lastName,age,address,phoneNumber,comment));
-           // pensionerService.addPensioner(new Pensioner("Иван","Иванов","64","Москва улица Ленина 1 кв 1","89063453434","All I need is ..."));
-            pensionerAddress = address;
-            ///to Eugeny
-
             try {
-                SendGetRequestToBot.executeGetRequest("http://1b257023.ngrok.io/servletBot",pensionerAddress);
+                SendGetRequestToBot.executeGetRequest("http://e20ccaac.ngrok.io/servletBot",
+                        String.valueOf(pensionerService.getPensionerByPhone(phoneNumber).getId()));
             } catch (Exception e) {
                 e.printStackTrace();
             }
