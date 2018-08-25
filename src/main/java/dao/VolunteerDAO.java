@@ -9,16 +9,16 @@ import java.util.Collection;
 public interface VolunteerDAO {
 
     Volunteer getVolunteer(long id) throws HibernateException;
-    public long getID(Volunteer volunteer) throws  HibernateException;
+    long getID(Volunteer volunteer) throws  HibernateException;
 
-    public void addVolunteer(Volunteer volunteer) throws HibernateException;
+    long addVolunteer(Volunteer volunteer) throws HibernateException;
 
-    public void upDateVolunteer(Volunteer volunteer) throws HibernateException;
-    public Collection getAllVolunteers() throws HeadlessException;
-    public Collection getAllFreeVolunteers() throws HeadlessException;
-    public void delateVolunteer(Volunteer volunteer) throws HibernateException;
+    void upDateVolunteer(Volunteer volunteer) throws HibernateException;
+    Collection getAllVolunteers() throws HeadlessException;
+    Collection getAllFreeVolunteers() throws HeadlessException;
+    void delateVolunteer(Volunteer volunteer) throws HibernateException;
 
-    public Volunteer getVolunteerByStatus(boolean status) throws HibernateException;
-    public String getVolunteerByRank (String rank) throws HibernateException;
+    Volunteer getVolunteerByStatus(boolean status) throws HibernateException;
+    String getVolunteerByRank (String rank) throws HibernateException;
 
 }
