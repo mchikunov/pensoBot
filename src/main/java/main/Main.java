@@ -25,10 +25,10 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
 public class Main {
-public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
 
-   // String url = "http://054098cc.ngrok.io/servletBot"+"?address=" + "москва".getBytes(StandardCharsets.US_ASCII);
-   // ByteBuffer byteBuffer = Charset.forName("UTF-8").encode(url);
+        // String url = "http://054098cc.ngrok.io/servletBot"+"?address=" + "москва".getBytes(StandardCharsets.US_ASCII);
+        // ByteBuffer byteBuffer = Charset.forName("UTF-8").encode(url);
 
         BotStarter.startBot();
         DbHelper dbHelper = new DbHelper();
@@ -37,8 +37,6 @@ public static void main(String[] args) throws Exception{
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.addServlet(new ServletHolder(new IncomingCallServlet(pensionerService)), "/phone");
-
-
 
 
         ResourceHandler resource_handler = new ResourceHandler();
@@ -54,8 +52,7 @@ public static void main(String[] args) throws Exception{
         server.start();
 
 
-
-    System.out.println("Server started");
+        System.out.println("Server started");
         server.join();
-   }
+    }
 }

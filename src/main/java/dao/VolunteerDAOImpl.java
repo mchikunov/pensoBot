@@ -36,7 +36,11 @@ public class VolunteerDAOImpl implements VolunteerDAO {
 
     @Override
     public void updateVolunteer(Volunteer volunteer) throws HibernateException {
-
+        Session session = DbHelper.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.saveOrUpdate(volunteer);
+        session.getTransaction().commit();
+        session.close();
     }
 
     @Override
