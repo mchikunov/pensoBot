@@ -23,11 +23,11 @@ public class AddNewVolunteerServlet {
             String name = request.getParameter("name");
             String lastName = request.getParameter("lastName");
             String age = request.getParameter("age");
-            boolean status = true;
+            String phone = request.getParameter("phone");
             long chatId = 0;
 
 
-            Volunteer volunteer = new Volunteer(name, lastName, age, tel, status, chatId);
+            Volunteer volunteer = new Volunteer(name, lastName, age, phone, false, chatId);
             volunteerService.addVolunteer(volunteer);
 
             Gson gson = new Gson();
@@ -39,3 +39,4 @@ public class AddNewVolunteerServlet {
 
         }
     }
+}
