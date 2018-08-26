@@ -9,13 +9,13 @@ import java.io.Serializable;
 public class Volunteer extends User implements Serializable { // Serializable Important to Hibernate!
     private static final long serialVersionUID = -8706689714326132798L;
 
-    @Column(name = "status_vol", unique = false, updatable = false)
+    @Column(name = "status_vol", unique = false)
     public boolean status;
 
-    @Column(name = "rank_col", unique = false, updatable = false)
+    @Column(name = "rank_col", unique = false)
     public String rank;
 
-    @Column(name = "chat_id", unique = true, updatable = false)
+    @Column(name = "chat_id", unique = true)
     public long chatId;
 
     public boolean isStatus() {
@@ -39,7 +39,7 @@ public class Volunteer extends User implements Serializable { // Serializable Im
     }
 
 
-    public Volunteer(String name, String lastName, String age, String tel, boolean status, long chatId) {
+    public Volunteer(String name, String lastName, String age, boolean status, long chatId) {
         super(name, lastName, age);
         this.status = status;
         this.rank = "Начинающий";

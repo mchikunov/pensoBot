@@ -9,13 +9,13 @@ import java.io.Serializable;
 public class Pensioner extends User implements Serializable { // Serializable Important to Hibernate!
     private static final long serialVersionUID = -8706689714326132798L;
 
-    @Column(name = "address", unique = false, updatable = false)
+    @Column(name = "address", unique = false)
     private String address;
 
-    @Column(name = "phone", unique = false, updatable = false)
+    @Column(name = "phone", unique = false)
     private String phone;
 
-    @Column(name = "comment", unique = false, updatable = false)
+    @Column(name = "comment", unique = false)
     private String comment;
 
     public String getAddress() {
