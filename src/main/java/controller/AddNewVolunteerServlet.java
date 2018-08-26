@@ -10,18 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class AddNewVolunteerServlet {
-    public class SignUpServlet extends HttpServlet {
+public class AddNewVolunteerServlet extends HttpServlet {
         private final VolunteerService volunteerService;
 
-        public SignUpServlet(VolunteerService volunteerService) {
-            this.volunteerService = volunteerService;
-        }
+    public AddNewVolunteerServlet(VolunteerService volunteerService) {
+        this.volunteerService = volunteerService;
+    }
 
-        public void doPost(HttpServletRequest request,
-                           HttpServletResponse response) throws ServletException, IOException {
-            String name = request.getParameter("name");
-            String lastName = request.getParameter("lastName");
+    public void doPost(HttpServletRequest request,
+                       HttpServletResponse response) throws ServletException, IOException {
+            String name = request.getParameter("firstname");
+            String lastName = request.getParameter("lastname");
             String age = request.getParameter("age");
             String phone = request.getParameter("phone");
             long chatId = 0;
@@ -39,4 +38,4 @@ public class AddNewVolunteerServlet {
 
         }
     }
-}
+

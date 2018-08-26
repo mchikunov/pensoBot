@@ -229,8 +229,8 @@
                     <form action="/formaction" method="POST">
 					  <div class="form-group">
     <label></label>
-    <input type="firstname" class="form-control" id="firstname" placeholder="Имя"><br>
-    <input type="lastname" class="form-control" id="lastname" placeholder="Фамилия"><br>
+    <input type="firstname" class="form-control" id="firstname" name="firstname" placeholder="Имя"><br>
+    <input type="lastname" class="form-control" id="lastname" name="lastname" placeholder="Фамилия"><br>
   </div> 
     <!--<div class="form-group">-->
     <!--<label class="control-label">Пол</label><br>-->
@@ -246,7 +246,7 @@
     <!--</div>-->
   <!--</div>-->
   <div class="form-group">
-        <input class="form-control" type="number" name="age" placeholder="Ваш возраст" min="18" max="70" />
+        <input class="form-control" type="number" id="age" name="age" placeholder="Ваш возраст" min="18" max="70" />
 		<small id="ageHelp" class="form-text text-muted">Ваш возраст должен быть не менее 18, но не более 70.</small>
     </div>
   <!--<div class="form-group">-->
@@ -256,7 +256,7 @@
   <!--</div>-->
   <div class="form-group">
   <!--<label for="phone">Номер телефона</label>-->
-        <input class="form-control" type="text" name="phone" placeholder="Мобильный телефон"/>
+        <input class="form-control" type="text" id="phone" name="phone" placeholder="Мобильный телефон"/>
     </div>
   <!--<div class="form-group">-->
     <!--<label for="password">Пароль</label>-->
@@ -297,6 +297,7 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
                             <button type="submit" class="btn btn-primary">Отправить форму</button>
+                            <a href=“/formaction”></a>
                         </div>
                     </form>
                 </div>

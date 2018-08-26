@@ -47,7 +47,7 @@ public class DbHelper {
         configuration.setProperty("hibernate.connection.requireSSL", "false");
         configuration.setProperty("hibernate.connection.useSSL", "false");
         configuration.setProperty("hibernate.connection.username", "root");
-        configuration.setProperty("hibernate.connection.password", "root");
+        configuration.setProperty("hibernate.connection.password", "kbwtbcn12");
         configuration.setProperty("hibernate.show_sql", hibernate_show_sql);
 
         configuration.setProperty("hibernate.hbm2ddl.auto", hibernate_hbm2ddl_auto);
