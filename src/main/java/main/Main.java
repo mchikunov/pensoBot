@@ -31,9 +31,10 @@ public static void main(String[] args) throws Exception{
    // String url = "http://054098cc.ngrok.io/servletBot"+"?address=" + "москва".getBytes(StandardCharsets.US_ASCII);
    // ByteBuffer byteBuffer = Charset.forName("UTF-8").encode(url);
 
-
+        BotStarter.startBot();
         DbHelper dbHelper = new DbHelper();
         PensionerService pensionerService = new PensionerServiceImpl();
+
 
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
@@ -53,7 +54,7 @@ public static void main(String[] args) throws Exception{
         Server server = new Server(8081);
         server.setHandler(handlers);
         server.start();
-        
+
 
     System.out.println("Server started");
         server.join();
