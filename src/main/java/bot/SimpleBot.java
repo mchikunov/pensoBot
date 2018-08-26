@@ -129,7 +129,6 @@ public class SimpleBot extends TelegramLongPollingBot {
             long chatId = callbackQuery.getFrom().getId();
             String button = callbackQuery.getData();
             if (button.equals("registration") ) {
-
                 sendMessage("Введите ваше Имя Фамилию возвраст, через пробел", chatId);
                 contex.put(chatId, "registration");
             } else if (button.equals("online")) {

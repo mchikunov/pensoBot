@@ -25,37 +25,26 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
 public class Main {
-public static void main(String[] args) throws Exception{
-
-   // String url = "http://054098cc.ngrok.io/servletBot"+"?address=" + "москва".getBytes(StandardCharsets.US_ASCII);
-   // ByteBuffer byteBuffer = Charset.forName("UTF-8").encode(url);
-
+    public static void main(String[] args) throws Exception {
         BotStarter.startBot();
+
         DbHelper dbHelper = new DbHelper();
         PensionerService pensionerService = new PensionerServiceImpl();
-
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.addServlet(new ServletHolder(new IncomingCallServlet(pensionerService)), "/phone");
 
-
-
-
         ResourceHandler resource_handler = new ResourceHandler();
         resource_handler.setResourceBase("public_html");
 
-
         HandlerList handlers = new HandlerList();
         handlers.setHandlers(new Handler[]{resource_handler, context});
-
 
         Server server = new Server(8081);
         server.setHandler(handlers);
         server.start();
 
-
-
-    System.out.println("Server started");
+        System.out.println("Server started");
         server.join();
-   }
+    }
 }
