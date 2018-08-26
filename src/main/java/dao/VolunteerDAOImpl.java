@@ -1,15 +1,12 @@
 package dao;
 
 
-import model.Pensioner;
 import model.Volunteer;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import util.DbHelper;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -59,7 +56,7 @@ public class VolunteerDAOImpl implements VolunteerDAO {
     }
 
     @Override
-    public Collection getAllVolunteers() throws HeadlessException {
+    public List getAllVolunteers() throws HeadlessException {
         Session session = DbHelper.getSessionFactory().openSession();
         List volunteers = session.createCriteria(Volunteer.class).list();
         session.close();
@@ -76,7 +73,7 @@ public class VolunteerDAOImpl implements VolunteerDAO {
     }
 
     @Override
-    public Collection getAllFreeVolunteers() throws HeadlessException {
+    public List getAllFreeVolunteers() throws HeadlessException {
         Session session = DbHelper.getSessionFactory().openSession();
         List volunteers = session.createQuery("from Volunteer where status = true").list();
         session.close();

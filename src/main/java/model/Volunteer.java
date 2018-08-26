@@ -15,6 +15,10 @@ public class Volunteer extends User implements Serializable { // Serializable Im
     @Column(name = "rank_col", unique = false)
     public String rank;
 
+    public long getChatId() {
+        return chatId;
+    }
+
     @Column(name = "chat_id", unique = true)
     public long chatId;
 
@@ -24,6 +28,7 @@ public class Volunteer extends User implements Serializable { // Serializable Im
     public boolean isStatus() {
         return status;
     }
+
 
 
     @SuppressWarnings("UnusedDeclaration")

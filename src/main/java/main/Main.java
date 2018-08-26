@@ -1,7 +1,6 @@
 package main;
 
 
-import controller.AddNewVolunteerServlet;
 import controller.IncomingCallServlet;
 import model.Pensioner;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -33,15 +32,15 @@ public class Main {
         // String url = "http://054098cc.ngrok.io/servletBot"+"?address=" + "москва".getBytes(StandardCharsets.US_ASCII);
         // ByteBuffer byteBuffer = Charset.forName("UTF-8").encode(url);
 
+
         BotStarter.startBot();
         DbHelper dbHelper = new DbHelper();
         PensionerService pensionerService = new PensionerServiceImpl();
-        VolunteerService volunteerService = new VolunteerServiceImpl();
-
+//        pensionerService.addPensioner(new Pensioner("","","","Москва Ленина 50",
+//                "89854859568", "скорая"));
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
-        context.addServlet(new ServletHolder(new IncomingCallServlet(pensionerService)), "/phone");
-        context.addServlet(new ServletHolder(new AddNewVolunteerServlet(volunteerService)), "/formaction");
+        context.addServlet(new ServletHolder(new IncomingCallServlet()), "/phone");
 
 
         ResourceHandler resource_handler = new ResourceHandler();
@@ -55,6 +54,7 @@ public class Main {
         Server server = new Server(8081);
         server.setHandler(handlers);
         server.start();
+
 
 
         System.out.println("Server started");

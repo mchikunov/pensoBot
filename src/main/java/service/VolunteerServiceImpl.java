@@ -7,6 +7,7 @@ import org.hibernate.HibernateException;
 
 import java.awt.*;
 import java.util.Collection;
+import java.util.List;
 
 public class VolunteerServiceImpl implements VolunteerService {
 
@@ -39,7 +40,7 @@ public class VolunteerServiceImpl implements VolunteerService {
     }
 
     @Override
-    public Collection getAllFreeVolunteers() throws HeadlessException {
+    public List getAllFreeVolunteers() throws HeadlessException {
         return volunteerDAO.getAllFreeVolunteers();
     }
 

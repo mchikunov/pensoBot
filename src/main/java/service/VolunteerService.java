@@ -4,7 +4,8 @@ import model.Volunteer;
 import org.hibernate.HibernateException;
 
 import java.awt.*;
-import java.util.Collection;
+import java.util.*;
+import java.util.List;
 
 public interface VolunteerService {
 
@@ -18,7 +19,7 @@ public interface VolunteerService {
 
     void deleteVolunteer(Volunteer volunteer) throws HibernateException;
 
-    Collection getAllFreeVolunteers() throws HeadlessException;
+    List getAllFreeVolunteers() throws HeadlessException;
 
     Volunteer getVolunteerByChatId(long chatId) throws HeadlessException;
 

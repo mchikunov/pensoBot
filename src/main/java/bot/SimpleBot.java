@@ -35,12 +35,18 @@ public class SimpleBot extends TelegramLongPollingBot {
         super(botOptions);
     }
 
+    private Pensioner pensioner;
 
-    public SimpleBot() {
+    public SimpleBot(){
         super();
     }
 
-    public void sendMessageWithLocation(long id , long chatId) {
+    public SimpleBot(Pensioner pensioner) {
+        super();
+        this.pensioner = pensioner;
+    }
+
+    public void sendMessageWithLocation(String adress) {
 //        SendMessage message = new SendMessage() // Create a message object object
 //                .setChatId(chatId)
 //                .setText(msg);
@@ -54,28 +60,33 @@ public class SimpleBot extends TelegramLongPollingBot {
         markupInline.setKeyboard(rowsInline);
 //        message.setReplyMarkup(markupInline);
 
-        String adress = pensionerService.getPensioner(chatId).getAddress();
+
         String[] location = new String[1];
         try {
             location = TransformAddress.getLatLongPositions(adress);
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         float lat = Float.valueOf(location[0]);
         float lng = Float.valueOf(location[1]);
+
         try {
 
            // - этот код отправляет геопозицию
 
            //Float lat = 59.9418720f, lng = 30.2655820f;
             SendLocation sendLocation = new SendLocation(lat, lng);
-            sendLocation.setChatId(chatId);
+
+            List<Volunteer> volonteerFree = volunteerService.getAllFreeVolunteers();
+            for (Volunteer volunteer: volonteerFree) {
+                System.out.println("id volunteer " + volunteer.getChatId());
+                sendLocation.setChatId(volunteer.getChatId());
+                execute(sendLocation);
+            }
+
             // - конец кода
 
-            execute(sendLocation);
             //execute(); // Call method to send the message
         } catch (TelegramApiException e) {
            e.printStackTrace();
