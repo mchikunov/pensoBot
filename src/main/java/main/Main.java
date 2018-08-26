@@ -53,10 +53,7 @@ public static void main(String[] args) throws Exception{
         Server server = new Server(8081);
         server.setHandler(handlers);
         server.start();
-
-
-    pensionerService.addPensioner(new Pensioner("Иван","Иванов","64","Москва улица Ленина 1 кв 1","79854859568","All I need is ..."));
-
+        
 
     System.out.println("Server started");
         server.join();
