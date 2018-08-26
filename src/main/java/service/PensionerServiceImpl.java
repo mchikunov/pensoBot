@@ -24,8 +24,4 @@ public class PensionerServiceImpl implements PensionerService {
         return pensionerDAO.getPensionerByPhone(phoneNumber);
     }
 
-    @Override
-    public void deletePensioner(Pensioner pensioner) throws HibernateException {
-        pensionerDAO.deletePensioner(pensioner);
-    }
 }

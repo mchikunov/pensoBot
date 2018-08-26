@@ -34,9 +34,8 @@ public class VolunteerServiceImpl implements VolunteerService {
     }
 
     @Override
-    public long addVolonter(Volunteer volunteer) throws HibernateException {
-        volunteerDAO.addVolunteer(volunteer);
-        return volunteerDAO.getID(volunteer);
+    public void deleteVolunteer(Volunteer volunteer) throws HibernateException {
+        volunteerDAO.deleteVolunteer(volunteer);
     }
 
     @Override

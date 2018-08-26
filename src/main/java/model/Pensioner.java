@@ -12,7 +12,7 @@ public class Pensioner extends User implements Serializable { // Serializable Im
     @Column(name = "address", unique = false, updatable = false)
     private String address;
 
-    @Column(name = "phone", unique = true, updatable = false)
+    @Column(name = "phone", unique = false, updatable = false)
     private String phone;
 
     @Column(name = "comment", unique = false, updatable = false)

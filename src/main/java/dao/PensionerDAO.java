@@ -7,8 +7,16 @@ import java.awt.*;
 import java.util.Collection;
 
 public interface PensionerDAO {
-    Pensioner getPensioner(long id) throws HibernateException;
-    void addPensioner(Pensioner pensioner) throws HibernateException;
-    void deletePensioner(Pensioner pensioner) throws HibernateException;
-    Pensioner getPensionerByPhone(String phoneNumber) throws HibernateException;
+
+    public Pensioner getPensioner(long id) throws HibernateException;
+    public long getID(Pensioner pensioner) throws  HibernateException;
+
+    public void addPensioner(Pensioner pensioner) throws HibernateException;
+    public void upDatePensioner(Pensioner pensioner) throws HibernateException;
+    public Collection getAllPensioners() throws HeadlessException;
+    public void delatePensioner(Pensioner pensioner) throws HibernateException;
+
+    public Pensioner getPensionerByPhone(String phoneNumber) throws HibernateException;
+    public String getAddressByPhone (String phoneNumber) throws HibernateException;
+
 }

@@ -72,14 +72,6 @@ public class VolunteerDAOImpl implements VolunteerDAO {
     }
 
     @Override
-    public long getID(Volunteer volunteer) throws HibernateException {
-        Session session = DbHelper.getSessionFactory().openSession();
-        long id = (long)session.load(Pensioner.class, volunteer.getId());
-        session.close();
-        return id;
-    }
-
-    @Override
     public Collection getAllFreeVolunteers() throws HeadlessException {
         Session session = DbHelper.getSessionFactory().openSession();
         List volunteers = session.createQuery("from Volunteer where status = true").list();
