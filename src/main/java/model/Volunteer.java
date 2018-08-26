@@ -39,7 +39,7 @@ public class Volunteer extends User implements Serializable { // Serializable Im
     }
 
 
-    public Volunteer(String name, String lastName, String age, boolean status, long chatId) {
+    public Volunteer(String name, String lastName, String age, String tel, boolean status, long chatId) {
         super(name, lastName, age);
         this.status = status;
         this.rank = "Начинающий";
