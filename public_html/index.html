@@ -1,22 +1,438 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8"/>
-    <title>L3.2</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Мы сообщество тех, кому не безразлично положение старшего поколения! Готов помочь? Вступай к нам!">
+    <meta name="author" content="core_1_5">
+
+    <title>Pens000_site</title>
+	<link rel="shortcut icon" href="img/favicon1.ico"/> 
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/stylish-portfolio.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 </head>
+
 <body>
-<p>Pensioner</p>
-<h3> Please, add your data: </h3>
-<form action="/signup" method="POST">
-    Login: <input type="text" name="login"/>
-    Password: <input type="password" name="password"/>
-    <input type="submit" value="Sign up">
+
+    <!-- Navigation -->
+    <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
+    <nav id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+            <li class="sidebar-brand">
+                <a href="#top" onclick=$("#menu-close").click();>FAQ</a>
+            </li>
+            <li>
+                <a href="#about" onclick=$("#menu-close").click();>О нас</a>
+            </li>
+            <li>
+                <a href="#services" onclick=$("#menu-close").click();>Наша работа</a>
+            </li>
+            <li>
+                <a href="#portfolio" onclick=$("#menu-close").click();>Для чего мы это делаем		</a>
+            </li>
+            <li>
+                <a href="#reg" onclick=$("#menu-close").click();><strong>Встуить к нам</strong></a>
+            </li>
+			<li>
+                <a href="index_orig.html" onclick=$("#menu-close").click();><ins>Для модераторов</ins></a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header id="top" class="header">
+        <div class="text-vertical-center">
+            <h1>Волонтерская Помощь Пенсионерам</h1>
+            <h2>Помоги пожилому человеку!</h2>
+            <br>
+            <a href="#about" class="btn btn-blue btn-lg">Начать</a>
+        </div>
+    </header>
+
+    <!-- About -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Мы с Вами помогаем пенсионерам и нуждающимся <strong>делом</strong> и <strong>словом</strong>.</h2>
+                    <p class="lead">От Вас нужно желание сделать мир лучше и немного совбодного времени.</p>
+                
+				</div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+    <!-- Services -->
+    <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
+    <section id="services" class="services bg-primary">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <h2>Как мы работаем</h2>
+                    <hr class="small">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-cloud fa-stack-1x text-primary"></i>
+                            </span>
+                                <h4>
+                                    <strong>Современные технологии</strong>
+                                </h4>
+                                <p>Можете предложить свою помощь быстро и просто</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-compass fa-stack-1x text-primary"></i>
+                            </span>
+                                <h4>
+                                    <strong>Нет региональных ограничений</strong>
+                                </h4>
+                                <p>Вы сможете помочь людям, которые находятся рядом с вами</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-mobile fa-stack-1x text-primary"></i>
+                            </span>
+                                <h4>
+                                    <strong>Простая регистрация</strong>
+                                </h4>
+                                <p>Вам будет достаточно только смартфона что бы начать помогать людям</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-users fa-stack-1x text-primary"></i>
+                            </span>
+                                <h4>
+                                    <strong>Мы - сообщество</strong>
+                                </h4>
+                                <p>Занимаясь общим делом мы делаем наше общество лучше!</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.col-lg-10 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+    <!-- Callout -->
+    <aside class="callout">
+        <div class="text-vertical-bottom">
+            <p margin-top="50%">Им нужна твоя помощь!</p>
+        </div>
+    </aside>
+
+    <!-- Portfolio -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                    <h2>Для них мыс вами работаем</h2>
+                    <hr class="small">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="portfolio-item">
+                                <a>
+                                    <img class="img-portfolio img-responsive" src="img/portfolio-5.jpg">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="portfolio-item">
+                                <a>
+                                    <img class="img-portfolio img-responsive" src="img/portfolio-6.jpg">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="portfolio-item">
+                                <a>
+                                    <img class="img-portfolio img-responsive" src="img/portfolio-7.jpg">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="portfolio-item">
+                                <a>
+                                    <img class="img-portfolio img-responsive" src="img/portfolio-8.jpg">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.col-lg-10 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+    <!-- Call to Action -->
+    <section id="reg" class="call-to-action">
+				<div class="container">
+				<div class="row">
+				<div class="callout-block text-center fade-in-b">
+					<h1>Регистрируйся прямо <b>сейчас!</b></h1>
+					<h3>Помогая пожилым людям сейчас ты делаешь правильное дело. Каждый, отдавая часть твоих сил на общее дело, вносит вклад в светлое будущее всей русской нации.</h3>
+					<br>
+					<br>
+					<a data-toggle="modal" data-target="#smallModal" class="btn-lg btn-primary">Регистрация</a>
+					<a class="fa-telega fa-send" href="https://t.me/pensooo_bot?start"></a> <a class="telega-text" target="_blank" href="https://t.me/pensooo_bot?start">Вход</a>
+				</div>
+			</div>
+    <div id="smallModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm-6">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" color="black">Введите Ваши данные</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+					  <div class="form-group">
+    <label for="exampleInputEmail1">ФИО</label>
+    <input type="lastname" class="form-control" id="lastname" placeholder="Фамилия"><br>
+	 <input type="firstname" class="form-control" id="firstname" placeholder="Имя"><br>
+	  <input type="patronymic" class="form-control" id="patronymic" placeholder="Отчество"><br>
+  </div> 
+    <div class="form-group">
+    <label class="control-label">Пол</label><br>
+    <div class="col-xs-2">
+      <label class="radio-inline">
+        <input type="radio" name="genderRadios" value="male"> Мужской
+      </label>
+    </div>
+    <div class="col-xs-2">
+      <label class="radio-inline">
+        <input type="radio" name="genderRadios" value="female"> Женский
+      </label>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="form-group">
+        <input class="form-control" type="number" name="age" placeholder="Ваш возраст" min="18" max="70" />
+		<small id="ageHelp" class="form-text text-muted">Ваш возраст должен быть не менее 18, но не более 70.</small>
+    </div>
+  <div class="form-group">
+    <label for="email1">Адрес электронной почты</label>
+    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Электронная почта">
+    <small id="emailHelp" class="form-text text-muted">Мы никогда не делимся личными данными.</small>
+  </div>
+  <div class="form-group">
+  <label for="tel">Номер телефона</label>
+        <input class="form-control" type="text" name="tel" placeholder="Мобильный телефон"/>
+    </div>
+  <div class="form-group">
+    <label for="password">Пароль</label>
+    <input type="password" class="form-control" id="password1" placeholder="Пароль">
+  </div>
+  <div class="form-group">
+    <label for="exampleTextarea">Расскажите почему вы хотите помогать пожилым людям:</label>
+    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="file">Прикрепите скан вашего паспорта</label><br>
+    <input type="file" class="form-control-file" id="file" aria-describedby="fileHelp"><br>
+    <small id="help" class="form-text text-muted">Мы гарантируем, что Ваши персональные данные будут в полной безопасности.</small>
+  </div>
+    <legend>Что Вы готовы делать, что бы помочь пенсионеру?</legend>
+  <div class="form-check">
+    <label class="form-check-label">
+      <input type="checkbox" class="form-check-input">
+      Вынести мусор
+    </label><br>
+	<label class="form-check-label">
+      <input type="checkbox" class="form-check-input">
+		Убрать в доме
+    </label><br>
+	<label class="form-check-label">
+      <input type="checkbox" class="form-check-input">
+      Сходить в магазин за продуктами или в аптеку
+    </label><br>
+	<label class="form-check-label">
+      <input type="checkbox" class="form-check-input">
+      Могу оказать базовую медицинскую помощь
+    </label><br>
+	<label class="form-check-label">
+      <input type="checkbox" class="form-check-input">
+      Могу поддержать морально и разговаривать на любые темы
+    </label>
+  </div>
 </form>
-<h3> Data validator: </h3>
-<form action="/signin" method="POST">
-    Login: <input type="text" name="login"/>
-    Password: <input type="password" name="password"/>
-    <input type="submit" value="Sign in">
-</form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                    <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+                </div>
+            </div>
+        </div>
+		</div>
+		</section>
+
+    <!-- Map -->
+  <!--  <section id="contact" class="map">
+        <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>
+        <br />
+        <small>
+            <a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a>
+        </small>
+        </iframe>
+    </section>
+	-->
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                    <h4><strong>Бабуля Inc.</strong>
+                    </h4>
+                    <p>
+                        <br>Поселок Подборовье, Россия</p>
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-phone fa-fw"></i> (123) 456-7890</li>
+                        <li><i class="fa fa-envelope-o fa-fw"></i> <a href="mailto:name@example.com">name@example.com</a>
+                        </li>
+                    </ul>
+                    <br>
+                    <ul class="list-inline">
+                        <li>
+                            <a href="#"><i class="fa fa-facebook fa-fw fa-3x"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-twitter fa-fw fa-3x"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-dribbble fa-fw fa-3x"></i></a>
+                        </li>
+                    </ul>
+                    <hr class="small">
+                    <p class="text-muted">Copyright &copy; Помоги Бабуле Inc.</p>
+                </div>
+            </div>
+        </div>
+        <a id="to-top" href="#top" class="btn btn-dark btn-lg"><i class="fa fa-chevron-up fa-fw fa-1x"></i></a>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+	<script src="js/bootstrap.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	<script src="js/index.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script>
+    // Closes the sidebar menu
+    $("#menu-close").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+    // Opens the sidebar menu
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+    // Scrolls to the selected menu item on the page
+    $(function() {
+        $('a[href*=#]:not([href=#],[data-toggle],[data-target],[data-slide])').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });
+    //#to-top button appears after scrolling
+    var fixed = false;
+    $(document).scroll(function() {
+        if ($(this).scrollTop() > 250) {
+            if (!fixed) {
+                fixed = true;
+                // $('#to-top').css({position:'fixed', display:'block'});
+                $('#to-top').show("slow", function() {
+                    $('#to-top').css({
+                        position: 'fixed',
+                        display: 'block'
+                    });
+                });
+            }
+        } else {
+            if (fixed) {
+                fixed = false;
+                $('#to-top').hide("slow", function() {
+                    $('#to-top').css({
+                        display: 'none'
+                    });
+                });
+            }
+        }
+    });
+    // Disable Google Maps scrolling
+    // See http://stackoverflow.com/a/25904582/1607849
+    // Disable scroll zooming and bind back the click event
+    var onMapMouseleaveHandler = function(event) {
+        var that = $(this);
+        that.on('click', onMapClickHandler);
+        that.off('mouseleave', onMapMouseleaveHandler);
+        that.find('iframe').css("pointer-events", "none");
+    }
+    var onMapClickHandler = function(event) {
+            var that = $(this);
+            // Disable the click handler until the user leaves the map area
+            that.off('click', onMapClickHandler);
+            // Enable scrolling zoom
+            that.find('iframe').css("pointer-events", "auto");
+            // Handle the mouse leave event
+            that.on('mouseleave', onMapMouseleaveHandler);
+        }
+        // Enable map zooming with mouse scroll when the user clicks the map
+    $('.map').on('click', onMapClickHandler);
+    </script>
+
 </body>
+
 </html>
