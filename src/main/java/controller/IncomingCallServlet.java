@@ -34,7 +34,7 @@ public class IncomingCallServlet extends HttpServlet {
         Pensioner pensioner = pensionerService.getPensionerByPhone(phoneNumber);
         if (pensioner != null) {
             try {
-                SendGetRequestToBot.executeGetRequest("http://e20ccaac.ngrok.io/servletBot" , String.valueOf(pensioner.getId()));
+                SendGetRequestToBot.executeGetRequest("http://127.0.0.1:8081/servletBot" , String.valueOf(pensioner.getId()));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -42,7 +42,7 @@ public class IncomingCallServlet extends HttpServlet {
         else {
             pensionerService.addPensioner(new Pensioner(name,lastName,age,address,phoneNumber,comment));
             try {
-                SendGetRequestToBot.executeGetRequest("http://e20ccaac.ngrok.io/servletBot",
+                SendGetRequestToBot.executeGetRequest("http://127.0.0.1:8081/servletBot",
                         String.valueOf(pensionerService.getPensionerByPhone(phoneNumber).getId()));
             } catch (Exception e) {
                 e.printStackTrace();
