@@ -19,7 +19,7 @@ import java.util.Map;
 
 public class SimpleBot extends TelegramLongPollingBot {
 
-    private static  final VolunteerService volunteerService = new VolunteerServiceImpl();
+    private static final VolunteerService volunteerService = new VolunteerServiceImpl();
 
     private Map<Long, String> contex = new HashMap<>();
 
@@ -32,7 +32,7 @@ public class SimpleBot extends TelegramLongPollingBot {
         super();
     }
 
-//    public void sendMessageWithLocation(long id, long chatId) {
+    //    public void sendMessageWithLocation(long id, long chatId) {
 ////
 ////        SendMessage message = new SendMessage() // Create a message object object
 ////                .setChatId(chatId)
@@ -126,7 +126,7 @@ public class SimpleBot extends TelegramLongPollingBot {
             CallbackQuery callbackQuery = update.getCallbackQuery();
             long chatId = callbackQuery.getFrom().getId();
             String button = callbackQuery.getData();
-            if (button.equals("registration") ) {
+            if (button.equals("registration")) {
                 sendMessage("Введите ваше Имя Фамилию возвраст, через пробел", chatId);
                 contex.put(chatId, "registration");
             }
