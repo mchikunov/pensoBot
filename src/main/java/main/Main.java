@@ -27,7 +27,6 @@ import java.nio.charset.StandardCharsets;
 public class Main {
 public static void main(String[] args) throws Exception{
 
-
    // String url = "http://054098cc.ngrok.io/servletBot"+"?address=" + "москва".getBytes(StandardCharsets.US_ASCII);
    // ByteBuffer byteBuffer = Charset.forName("UTF-8").encode(url);
 

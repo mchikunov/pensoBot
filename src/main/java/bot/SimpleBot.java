@@ -86,7 +86,9 @@ public class SimpleBot extends TelegramLongPollingBot {
                 InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
                 List<List<InlineKeyboardButton>> rowsInline = new ArrayList<>();
                 List<InlineKeyboardButton> rowInline = new ArrayList<>();
-                rowInline.add(new InlineKeyboardButton().setText("Регистрация").setCallbackData("registration"));
+                if (volunteerService.getVolunteerByChatId(chatId) == null) {
+                    rowInline.add(new InlineKeyboardButton().setText("Регистрация").setCallbackData("registration"));
+                }
                 rowInline.add(new InlineKeyboardButton().setText("Онлайн").setCallbackData("online"));
 
 
@@ -118,7 +120,6 @@ public class SimpleBot extends TelegramLongPollingBot {
             } else if (contex.get(chatId).equals("registration")) {
                 String[] params = messageFromUser.split(" ");
                 Volunteer volunteer = new Volunteer(params[0], params[1], params[2], true, chatId);
-                volunteerService.addVolonter(volunteer);
                 contex.remove(chatId);
                 sendMessage("Поздравляем Вы зарегистрированы", chatId);
             }
@@ -127,6 +128,7 @@ public class SimpleBot extends TelegramLongPollingBot {
             long chatId = callbackQuery.getFrom().getId();
             String button = callbackQuery.getData();
             if (button.equals("registration") ) {
+
                 sendMessage("Введите ваше Имя Фамилию возвраст, через пробел", chatId);
                 contex.put(chatId, "registration");
             }

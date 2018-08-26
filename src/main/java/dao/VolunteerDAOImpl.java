@@ -4,7 +4,6 @@ package dao;
 import model.Pensioner;
 import model.Volunteer;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import util.DbHelper;
 
@@ -35,7 +34,7 @@ public class VolunteerDAOImpl implements VolunteerDAO {
     }
 
     @Override
-    public void upDateVolunteer(Volunteer volunteer) throws HibernateException {
+    public void updateVolunteer(Volunteer volunteer) throws HibernateException {
         Session session = DbHelper.getSessionFactory().openSession();
         session.beginTransaction();
         session.update(volunteer);
@@ -46,14 +45,13 @@ public class VolunteerDAOImpl implements VolunteerDAO {
     @Override
     public Collection getAllVolunteers() throws HeadlessException {
         Session session = DbHelper.getSessionFactory().openSession();
-        List volunteers = new ArrayList<Volunteer>();
-        volunteers = session.createCriteria(Volunteer.class).list();
+        List volunteers = session.createCriteria(Volunteer.class).list();
         session.close();
         return volunteers;
     }
 
     @Override
-    public void delateVolunteer(Volunteer volunteer) throws HibernateException {
+    public void deleteVolunteer(Volunteer volunteer) throws HibernateException {
         Session session = DbHelper.getSessionFactory().openSession();
         session.beginTransaction();
         session.delete(volunteer);
@@ -62,32 +60,19 @@ public class VolunteerDAOImpl implements VolunteerDAO {
     }
 
     @Override
-    public long getID(Volunteer volunteer) throws HibernateException {
-        Session session = DbHelper.getSessionFactory().openSession();
-        long id = (long) session.load(Pensioner.class, volunteer.getId());
-        session.close();
-        return id;
-    }
-
-    @Override
     public Collection getAllFreeVolunteers() throws HeadlessException {
         Session session = DbHelper.getSessionFactory().openSession();
-        List volunteers = new ArrayList<Volunteer>();
-        volunteers = session.createQuery("from Volunteer where status = true").list();
+        List volunteers = session.createQuery("from Volunteer where status = true").list();
         session.close();
         return volunteers;
     }
 
     @Override
-    public Volunteer getVolunteerByStatus(boolean status) throws HibernateException {
+    public Volunteer getVolunteerByChatId(long chatId) throws HeadlessException {
         Session session = DbHelper.getSessionFactory().openSession();
-        Volunteer volunteer = (Volunteer)session.createQuery("from Volunteer where status = true").setMaxResults(1);
+        Volunteer volunteer = (Volunteer) session.createQuery("from Volunteer where chatId = " + chatId).uniqueResult();
         session.close();
         return volunteer;
     }
 
-    @Override
-    public String getVolunteerByRank(String rank) throws HibernateException {
-        return null;
-    }
 }
