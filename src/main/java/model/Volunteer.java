@@ -18,6 +18,9 @@ public class Volunteer extends User implements Serializable { // Serializable Im
     @Column(name = "chat_id", unique = true)
     public long chatId;
 
+    @Column(name = "phone", unique = true)
+    public String phone;
+
     public boolean isStatus() {
         return status;
     }
@@ -38,6 +41,13 @@ public class Volunteer extends User implements Serializable { // Serializable Im
         this.setName(name);
     }
 
+    public Volunteer(String name, String lastName, String age, String phone,  boolean status, long chatId) {
+        super(name, lastName, age);
+        this.status = status;
+        this.rank = "Начинающий";
+        this.chatId = chatId;
+        this.phone = phone;
+    }
 
     public Volunteer(String name, String lastName, String age, boolean status, long chatId) {
         super(name, lastName, age);
