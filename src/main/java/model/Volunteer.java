@@ -46,5 +46,7 @@ public class Volunteer extends User implements Serializable { // Serializable Im
         this.chatId = chatId;
 
     }
-
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
 }

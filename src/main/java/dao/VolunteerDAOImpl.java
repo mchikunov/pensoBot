@@ -4,6 +4,7 @@ package dao;
 import model.Pensioner;
 import model.Volunteer;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import util.DbHelper;
 
@@ -35,8 +36,19 @@ public class VolunteerDAOImpl implements VolunteerDAO {
 
     @Override
     public void updateVolunteer(Volunteer volunteer) throws HibernateException {
+
+    }
+
+    @Override
+    public void setStatus(boolean status) {
+
+    }
+
+    @Override
+    public void updateVolunteer(long chatId, boolean status) throws HibernateException {
         Session session = DbHelper.getSessionFactory().openSession();
         session.beginTransaction();
+        Volunteer volunteer = (Volunteer)session.createSQLQuery("UPDATE  Volunteer set status = " + status + "where chatId = " + chatId);
         session.update(volunteer);
         session.getTransaction().commit();
         session.close();

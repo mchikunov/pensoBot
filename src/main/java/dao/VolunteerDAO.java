@@ -14,6 +14,8 @@ public interface VolunteerDAO {
 
     void updateVolunteer(Volunteer volunteer) throws HibernateException;
 
+    void updateVolunteer(long chatId, boolean status) throws HibernateException;
+
     Collection getAllVolunteers() throws HeadlessException;
 
     void deleteVolunteer(Volunteer volunteer) throws HibernateException;
@@ -21,4 +23,7 @@ public interface VolunteerDAO {
     Collection getAllFreeVolunteers() throws HeadlessException;
 
     Volunteer getVolunteerByChatId(long chatId) throws HeadlessException;
+
+    void setStatus(boolean status);
+
 }

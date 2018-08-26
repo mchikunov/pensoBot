@@ -90,6 +90,7 @@ public class SimpleBot extends TelegramLongPollingBot {
                     rowInline.add(new InlineKeyboardButton().setText("Регистрация").setCallbackData("registration"));
                 }
                 rowInline.add(new InlineKeyboardButton().setText("Онлайн").setCallbackData("online"));
+                rowInline.add(new InlineKeyboardButton().setText("Офлайн").setCallbackData("offline"));
 
 
                 // Set the keyboard to the markup
@@ -131,6 +132,9 @@ public class SimpleBot extends TelegramLongPollingBot {
 
                 sendMessage("Введите ваше Имя Фамилию возвраст, через пробел", chatId);
                 contex.put(chatId, "registration");
+            } else if (button.equals("online")) {
+                volunteerService.getVolunteerByChatId(chatId).setStatus(true);
+                sendMessage("Вы онлайн, ожидайте заявку", chatId);
             }
         }
     }
