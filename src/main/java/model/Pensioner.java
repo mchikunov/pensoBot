@@ -1,13 +1,11 @@
 package model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 
 @Entity
 @Table(name = "pensioner")
-public class Pensioner extends User implements Serializable { // Serializable Important to Hibernate!
-    private static final long serialVersionUID = -8706689714326132798L;
+public class Pensioner extends User { // Serializable Important to Hibernate!
 
     @Column(name = "address", unique = false)
     private String address;
@@ -18,6 +16,9 @@ public class Pensioner extends User implements Serializable { // Serializable Im
     @Column(name = "comment", unique = false)
     private String comment;
 
+    @Column(name = "is_waiting", unique = false)
+    private boolean isWaiting;
+
     public String getAddress() {
         return address;
     }
@@ -25,6 +26,32 @@ public class Pensioner extends User implements Serializable { // Serializable Im
     public String getPhone() {
         return phone;
     }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public synchronized boolean isWaiting() {
+        return isWaiting;
+    }
+
+    public void setWaiting(boolean waiting) {
+        this.isWaiting = waiting;
+    }
+
+
 
     //Important to Hibernate!
     @SuppressWarnings("UnusedDeclaration")

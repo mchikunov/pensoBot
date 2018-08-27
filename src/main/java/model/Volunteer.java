@@ -2,6 +2,7 @@ package model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 
 @Entity
@@ -63,5 +64,21 @@ public class Volunteer extends User implements Serializable { // Serializable Im
     }
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Volunteer volunteer = (Volunteer) o;
+        return status == volunteer.status &&
+                chatId == volunteer.chatId &&
+                Objects.equals(rank, volunteer.rank) &&
+                Objects.equals(phone, volunteer.phone);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(status, rank, chatId, phone);
     }
 }

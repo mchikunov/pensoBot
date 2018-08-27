@@ -1,6 +1,5 @@
 package bot;
 
-import dao.VolunteerDAOImpl;
 import model.Pensioner;
 import model.Volunteer;
 import org.telegram.telegrambots.bots.DefaultBotOptions;
@@ -25,80 +24,79 @@ import java.util.Map;
 
 public class SimpleBot extends TelegramLongPollingBot {
 
-    private static  final VolunteerService volunteerService = new VolunteerServiceImpl();
+    private static final VolunteerService volunteerService = new VolunteerServiceImpl();
+    private static final PensionerService pensionerService = new PensionerServiceImpl();
 
-    private static  final PensionerService pensionerService = new PensionerServiceImpl();
 
-    private Map<Long, String> contex = new HashMap<>();
+    private static Map<Long, String> contex = new HashMap<>();
 
     public SimpleBot(DefaultBotOptions botOptions) {
         super(botOptions);
     }
 
-    private Pensioner pensioner;
-
-    public SimpleBot(){
-        super();
-    }
-
-    public SimpleBot(Pensioner pensioner) {
-        super();
-        this.pensioner = pensioner;
-    }
-
-    public void sendMessageWithLocation(String adress) {
-//        SendMessage message = new SendMessage() // Create a message object object
-//                .setChatId(chatId)
-//                .setText(msg);
+    public void sendMessageWithLocation(Pensioner pensioner, String comment) {
+        SendMessage msg = new SendMessage().setText("Необходима помощь: " + comment);
         InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> rowsInline = new ArrayList<>();
         List<InlineKeyboardButton> rowInline = new ArrayList<>();
-        rowInline.add(new InlineKeyboardButton().setText("Принять заявку").setCallbackData("accept"));
-        // Set the keyboard to the markup
+        rowInline.add(new InlineKeyboardButton().setText("Принять").setCallbackData("accept#" + pensioner.getId()));
         rowsInline.add(rowInline);
-        // Add it to the message
         markupInline.setKeyboard(rowsInline);
-//        message.setReplyMarkup(markupInline);
+        msg.setReplyMarkup(markupInline);
 
-
-        String[] location = new String[1];
+        String[] location;
         try {
-            location = TransformAddress.getLatLongPositions(adress);
+            //TODO расскоментить на норм локацию
+//            location = TransformAddress.getLatLongPositions(pensioner.getAddress());
         } catch (Exception e) {
             e.printStackTrace();
+            System.out.println("Location не получен пропускаем");
+            return;
         }
 
-        float lat = Float.valueOf(location[0]);
-        float lng = Float.valueOf(location[1]);
+//        float lat = Float.valueOf(location[0]);
+//        float lng = Float.valueOf(location[1]);
+        float lat = 59.942885F;
+        float lng = 30.257503F;
 
         try {
-
-           // - этот код отправляет геопозицию
-
-           //Float lat = 59.9418720f, lng = 30.2655820f;
             SendLocation sendLocation = new SendLocation(lat, lng);
 
-            List<Volunteer> volonteerFree = volunteerService.getAllFreeVolunteers();
-            for (Volunteer volunteer: volonteerFree) {
+            List<Volunteer> volunteers = volunteerService.getAllFreeVolunteers();
+            for (Volunteer volunteer : volunteers) {
                 System.out.println("id volunteer " + volunteer.getChatId());
                 sendLocation.setChatId(volunteer.getChatId());
+                msg.setChatId(volunteer.getChatId());
                 execute(sendLocation);
+                execute(msg);
             }
-
-            // - конец кода
-
-            //execute(); // Call method to send the message
         } catch (TelegramApiException e) {
-           e.printStackTrace();
-       }
+            e.printStackTrace();
+        }
     }
 
+    public void sendCanceledMessage(Volunteer volunteer) {
+        SendMessage msg = new SendMessage().setText("Волонтёр найден! Спасибо за вашу помощь, ожидайте новых заявок!");
+        try {
+            List<Volunteer> volunteers = volunteerService.getAllFreeVolunteers();
+            volunteers.remove(volunteer);
+            for (Volunteer v : volunteers) {
+                System.out.println("id volunteer " + v.getChatId());
+                msg.setChatId(v.getChatId());
+                execute(msg);
+            }
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     public void sendMessage(String msg, long chatId) {
-        SendMessage message = new SendMessage() // Create a message object object
+        SendMessage message = new SendMessage()
                 .setChatId(chatId)
                 .setText(msg);
         try {
-            execute(message); // Call method to send the message
+            execute(message);
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }
@@ -106,19 +104,19 @@ public class SimpleBot extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
+        InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> rowsInline = new ArrayList<>();
+        List<InlineKeyboardButton> rowInline = new ArrayList<>();
 
         if (update.hasMessage() && update.getMessage().hasText()) {
-//            String messageText = update.getMessage().getText();
             long chatId = update.getMessage().getChatId();
             String messageFromUser = update.getMessage().getText();
 
             if (messageFromUser.equals("/start")) {
-                SendMessage message = new SendMessage() // Create a message object object
+                SendMessage message = new SendMessage()
                         .setChatId(chatId)
                         .setText("Добро пожаловать в приложение  <Помоги Пенсионеру>  Зарегистрируйтесь, если вы зашли первый раз");
-                InlineKeyboardMarkup markupInline = new InlineKeyboardMarkup();
-                List<List<InlineKeyboardButton>> rowsInline = new ArrayList<>();
-                List<InlineKeyboardButton> rowInline = new ArrayList<>();
+
                 if (volunteerService.getVolunteerByChatId(chatId) == null) {
                     rowInline.add(new InlineKeyboardButton().setText("Регистрация").setCallbackData("registration"));
                 } else {
@@ -126,49 +124,55 @@ public class SimpleBot extends TelegramLongPollingBot {
                     rowInline.add(new InlineKeyboardButton().setText("Офлайн").setCallbackData("offline"));
                 }
 
-
-                // Set the keyboard to the markup
                 rowsInline.add(rowInline);
-                // Add it to the message
                 markupInline.setKeyboard(rowsInline);
                 message.setReplyMarkup(markupInline);
-
-
-//                try {
-//                    execute(message); // Sending our message object to user
-//                } catch (TelegramApiException e) {
-//                    e.printStackTrace();
-//                }
-
                 try {
-                    // - этот код отправляет геопозицию
-//                    Float lat = 59.9418720f, lng = 30.2655820f;
-//                    SendLocation sendLocation = new SendLocation(lat, lng);
-//                    sendLocation.setChatId(chatId);
-//                    // - конец кода
-//
-//                    execute(sendLocation);
-                    execute(message); // Call method to send the message
+                    execute(message);
                 } catch (TelegramApiException e) {
                     e.printStackTrace();
                 }
+
+                rowsInline.add(rowInline);
+                markupInline.setKeyboard(rowsInline);
+                message.setReplyMarkup(markupInline);
             } else if (contex.get(chatId).equals("registration")) {
                 String[] params = messageFromUser.split(" ");
                 Volunteer volunteer = new Volunteer(params[0], params[1], params[2], true, chatId);
                 volunteerService.addVolunteer(volunteer);
                 contex.remove(chatId);
-                sendMessage("Поздравляем Вы зарегистрированы! Ваш", chatId);
-                new InlineKeyboardButton().setText("Онлайн").setCallbackData("online");
-                new InlineKeyboardButton().setText("Офлайн").setCallbackData("offline");
+
+                SendMessage msg = new SendMessage()
+                        .setText("Поздравляем Вы зарегистрированы!")
+                        .setReplyMarkup(markupInline)
+                        .setChatId(chatId);
+                rowInline.add(new InlineKeyboardButton().setText("Онлайн").setCallbackData("online"));
+                rowInline.add(new InlineKeyboardButton().setText("Офлайн").setCallbackData("offline"));
+                rowsInline.add(rowInline);
+                markupInline.setKeyboard(rowsInline);
+                try {
+                    execute(msg);
+                } catch (TelegramApiException e) {
+                    e.printStackTrace();
+                }
+
             }
         } else if (update.hasCallbackQuery()) {
             CallbackQuery callbackQuery = update.getCallbackQuery();
             long chatId = callbackQuery.getFrom().getId();
             String button = callbackQuery.getData();
-            if (button.equals("registration") ) {
-
-                sendMessage("Введите ваше Имя Фамилию возвраст, через пробел", chatId);
+            if (button.equals("registration")) {
+                SendMessage msg = new SendMessage()
+                        .setText("Введите ваше Имя Фамилию возвраст, через пробел")
+                        .setChatId(chatId)
+                        .setReplyMarkup(markupInline);
                 contex.put(chatId, "registration");
+                try {
+                    execute(msg);
+                } catch (TelegramApiException e) {
+                    e.printStackTrace();
+                }
+
 
             } else if (button.equals("online")) {
                 Volunteer user = volunteerService.getVolunteerByChatId(chatId);
@@ -180,6 +184,18 @@ public class SimpleBot extends TelegramLongPollingBot {
                 user.setStatus(false);
                 volunteerService.updateVolunteer(user);
                 sendMessage("Вы отключены от системы, спасибо! Не забывайте пенсионерам нужна Ваша помощь!! Ждем вашего возвращения. ", chatId);
+            } else if (button.startsWith("accept")) {
+                int pensionerId = Integer.parseInt(button.split("#")[1]);
+                Pensioner pensioner = pensionerService.getPensioner(pensionerId);
+                if (pensioner.isWaiting()) {
+                    pensioner.setWaiting(false);
+                    pensionerService.updatePensioner(pensioner);
+                    Volunteer volunteer = volunteerService.getVolunteerByChatId(chatId);
+                    sendMessage("Спасибо за ваш отклик! Вас ждут!", chatId);
+                    sendCanceledMessage(volunteer);
+                } else {
+                    sendMessage("Спасибо, но эту заявку уже забрали :(", chatId);
+                }
             }
         }
     }

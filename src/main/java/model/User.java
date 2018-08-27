@@ -56,7 +56,7 @@ public class User implements Serializable { // Serializable Important to Hiberna
 
 
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

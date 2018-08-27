@@ -28,4 +28,9 @@ public class PensionerServiceImpl implements PensionerService {
     public void deletePensioner(Pensioner pensioner) throws HibernateException {
         pensionerDAO.deletePensioner(pensioner);
     }
+
+    @Override
+    public void updatePensioner(Pensioner pensioner) throws HibernateException {
+        pensionerDAO.updatePensioner(pensioner);
+    }
 }

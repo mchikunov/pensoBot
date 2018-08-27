@@ -11,4 +11,6 @@ public interface PensionerDAO {
     void addPensioner(Pensioner pensioner) throws HibernateException;
     void deletePensioner(Pensioner pensioner) throws HibernateException;
     Pensioner getPensionerByPhone(String phoneNumber) throws HibernateException;
+
+    void updatePensioner(Pensioner pensioner) throws HibernateException;
 }

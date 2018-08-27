@@ -1,6 +1,7 @@
 package dao;
 
 import model.Pensioner;
+import model.Volunteer;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -19,7 +20,7 @@ public class PensionerDAOImpl implements PensionerDAO {
     @Override
     public Pensioner getPensioner(long id) throws HibernateException {
         Session session = DbHelper.getSessionFactory().openSession();
-        Pensioner pensioner = (Pensioner) session.load(Pensioner.class, id);
+        Pensioner pensioner = (Pensioner) session.createQuery("from Pensioner where id = " + id).uniqueResult();
         session.close();
         return pensioner;
     }
@@ -63,5 +64,14 @@ public class PensionerDAOImpl implements PensionerDAO {
 
         session.close();
         return pensioner.size() == 0? null : pensioner.get(0) ;
+    }
+
+    @Override
+    public void updatePensioner(Pensioner pensioner) throws HibernateException {
+        Session session = DbHelper.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.saveOrUpdate(pensioner);
+        session.getTransaction().commit();
+        session.close();
     }
 }

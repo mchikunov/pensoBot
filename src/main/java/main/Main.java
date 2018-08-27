@@ -1,6 +1,7 @@
 package main;
 
 
+import bot.SimpleBot;
 import controller.IncomingCallServlet;
 import model.Pensioner;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -33,14 +34,14 @@ public class Main {
         // ByteBuffer byteBuffer = Charset.forName("UTF-8").encode(url);
 
 
-        BotStarter.startBot();
+        SimpleBot simpleBot = BotStarter.startBot();
         DbHelper dbHelper = new DbHelper();
         PensionerService pensionerService = new PensionerServiceImpl();
 //        pensionerService.addPensioner(new Pensioner("","","","Москва Ленина 50",
 //                "89854859568", "скорая"));
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
-        context.addServlet(new ServletHolder(new IncomingCallServlet()), "/phone");
+        context.addServlet(new ServletHolder(new IncomingCallServlet(simpleBot)), "/phone");
 
 
         ResourceHandler resource_handler = new ResourceHandler();
