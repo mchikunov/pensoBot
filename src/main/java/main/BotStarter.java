@@ -20,12 +20,12 @@ import java.net.PasswordAuthentication;
 
 
 public class BotStarter {
-    private static String PROXY_HOST = "45.32.152.77" /* proxy host */;
-    private static Integer PROXY_PORT = 23411 /* proxy port */;
-    private static String PROXY_USER = "stXSgQ" /* proxy user */;
-    private static String PROXY_PASSWORD = "3HLTwL" /* proxy password */;
+    private static String PROXY_HOST = "zoine.xyz" /* proxy host */;
+    private static Integer PROXY_PORT = 9288 /* proxy port */;
+    private static String PROXY_USER = "telegram" /* proxy user */;
+    private static String PROXY_PASSWORD = "HRwjQLfcV2R63n8h" /* proxy password */;
 
-    public static void startBot() throws Exception {
+    public static SimpleBot startBot() throws Exception {
         // Create the Authenticator that will return auth's parameters for proxy authentication
         Authenticator.setDefault(new Authenticator() {
             @Override
@@ -50,5 +50,6 @@ public class BotStarter {
             e.printStackTrace();
         }
         System.out.println("bot started");
+        return tgBot;
     }
 }

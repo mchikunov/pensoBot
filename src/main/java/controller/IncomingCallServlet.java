@@ -17,6 +17,11 @@ import java.util.ArrayList;
 public class IncomingCallServlet extends HttpServlet {
     private static final PensionerService pensionerService = new PensionerServiceImpl();
     private static final VolunteerService volunteerService = new VolunteerServiceImpl();
+    private SimpleBot simpleBot;
+
+    public IncomingCallServlet(SimpleBot simpleBot) {
+        this.simpleBot = simpleBot;
+    }
 
 
     @Override
@@ -26,18 +31,19 @@ public class IncomingCallServlet extends HttpServlet {
 //        String lastName = req.getParameter("lastName");
 //        String age = req.getParameter("age");
 //        String address = req.getParameter("address");
+        System.out.println("Поймал сервлет");
         String phoneNumber = req.getParameter("phone");
         String comment = req.getParameter("comment");
 //        String id = req.getParameter("pensionerId");
-
 
         Pensioner pensioner = pensionerService.getPensionerByPhone(phoneNumber);
 
         if (pensioner != null) {
             try {
                 //SendGetRequestToBot.executeGetRequest("http://127.0.0.1:8081/servletBot" , String.valueOf(pensioner.getId()));
-               SimpleBot simpleBot = new SimpleBot();
-               simpleBot.sendMessageWithLocation(pensioner.getAddress());
+                pensioner.setWaiting(true);
+                pensionerService.updatePensioner(pensioner);
+                simpleBot.sendMessageWithLocation(pensioner, comment);
             } catch (Exception e) {
                 e.printStackTrace();
             }
